@@ -1,0 +1,31 @@
+{% extends 'cv_app/base.html' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+<h2>Projects</h2>
+
+<!-- Search Form -->
+<form method="GET" class="mb-3">
+    <input type="text" name="q" placeholder="Search Projects" class="form-control mb-2" value="{{ request.GET.q }}">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<!-- Project List -->
+<h3>Your Projects</h3>
+<ul class="list-group">
+    {% for project in projects %}
+        <li class="list-group-item">
+            <strong>{{ project.title }}</strong>: {{ project.description }}
+            <a href="{% url 'project_detail' project.id %}">View</a> |
+            <a href="{% url 'edit_project' project.id %}">Edit</a> |
+            <a href="{% url 'delete_project' project.id %}">Delete</a>
+        </li>
+    {% empty %}
+        <li class="list-group-item">No projects available.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'add_project' %}" class="btn btn-success mt-3">Add New Project</a>
+<a href="{% url 'cv_home' %}" class="btn btn-secondary mt-3">Back to Home</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+body {
+    background-color: #f8f9fa; /* Light background for the overall page */
+    font-family: 'Arial', sans-serif;
+}
+
+.alert {
+    margin-top: 10px;
+}
+
+h1, h2, h3 {
+    color: #343a40; /* Dark gray for headings */
+}
+
+h4 {
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.profile-pic {
+    margin-bottom: 20px; /* Space below the profile picture */
+}
+
+.img-fluid {
+    border: 3px solid #007bff; /* Blue border for profile image */
+    border-radius: 50%; /* Rounded image */
+}
+
+.list-group-item {
+    border: 1px solid #dadada; /* Light gray border for list items */
+    margin-bottom: 10px; /* Space between list items */
+    background-color: #ffffff; /* White background for items */
+}

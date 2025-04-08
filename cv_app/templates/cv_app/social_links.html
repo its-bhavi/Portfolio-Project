@@ -1,0 +1,21 @@
+{% extends 'cv_app/base.html' %}
+
+{% block title %}Social Links{% endblock %}
+
+{% block content %}
+<h2>Social Links</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Add Social Link</button>
+</form>
+<h3>Current Links</h3>
+<ul>
+    {% for link in cv.social_links.all %}
+        <li>{{ link.platform }}: <a href="{{ link.url }}">{{ link.url }}</a></li>
+    {% empty %}
+        <li>No social links added.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'cv_home' %}" class="btn btn-secondary">Back to Home</a>
+{% endblock %}

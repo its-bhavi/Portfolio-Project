@@ -1,0 +1,21 @@
+{% extends 'cv_app/base.html' %}
+
+{% block title %}Work Experience{% endblock %}
+
+{% block content %}
+<h2>Work Experience</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save Work Experience</button>
+</form>
+<h3>Current Work Experience</h3>
+<ul>
+    {% for experience in cv.work_experience.all %}
+        <li>{{ experience.position }} at {{ experience.company }} ({{ experience.start_year }} - {{ experience.end_year }})</li>
+    {% empty %}
+        <li>No work experience details added.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'cv_home' %}" class="btn btn-secondary">Back to Home</a>
+{% endblock %}

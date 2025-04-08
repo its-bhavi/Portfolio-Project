@@ -1,0 +1,15 @@
+{% extends 'cv_app/base.html' %}
+
+{% block title %}Project Details{% endblock %}
+
+{% block content %}
+<h2>{{ project.title }}</h2>
+<p>{{ project.description }}</p>
+<p>Link: <a href="{{ project.link }}" target="_blank">{{ project.link }}</a></p>
+
+<a href="{% url 'projects' %}" class="btn btn-secondary">Back to Projects</a>
+{{% if user.is_authenticated %}}
+<a href="{% url 'edit_project' project.id %}" class="btn btn-warning">Edit Project</a>
+<a href="{% url 'delete_project' project.id %}" class="btn btn-danger">Delete Project</a>
+{% endif %}
+{% endblock %}

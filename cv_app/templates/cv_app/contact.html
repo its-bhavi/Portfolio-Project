@@ -1,0 +1,13 @@
+{% extends 'cv_app/base.html' %}
+
+{% block title %}Contact Information{% endblock %}
+
+{% block content %}
+<h2>Contact Information</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save</button>
+</form>
+<a href="{% url 'cv_home' %}" class="btn btn-secondary">Back to Home</a>
+{% endblock %}

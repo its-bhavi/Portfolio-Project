@@ -1,0 +1,21 @@
+{% extends 'cv_app/base.html' %}
+
+{% block title %}Certificates{% endblock %}
+
+{% block content %}
+<h2>Certificates</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Add Certificate</button>
+</form>
+<h3>Current Certificates</h3>
+<ul>
+    {% for certificate in cv.certificates.all %}
+        <li>{{ certificate.title }}: {{ certificate.description }} (Link: <a href="{{ certificate.link }}">{{ certificate.link }}</a>)</li>
+    {% empty %}
+        <li>No certificates added.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'cv_home' %}" class="btn btn-secondary">Back to Home</a>
+{% endblock %}

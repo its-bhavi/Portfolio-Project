@@ -1,0 +1,21 @@
+{% extends 'cv_app/base.html' %}
+
+{% block title %}Skills{% endblock %}
+
+{% block content %}
+<h2>Skills</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Add Skill</button>
+</form>
+<h3>Current Skills</h3>
+<ul>
+    {% for skill in cv.skills.all %}
+        <li>{{ skill.name }}</li>
+    {% empty %}
+        <li>No skills added.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'cv_home' %}" class="btn btn-secondary">Back to Home</a>
+{% endblock %}

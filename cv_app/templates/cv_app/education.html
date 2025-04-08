@@ -1,0 +1,21 @@
+{% extends 'cv_app/base.html' %}
+
+{% block title %}Education{% endblock %}
+
+{% block content %}
+<h2>Education</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save Education</button>
+</form>
+<h3>Current Education Details</h3>
+<ul>
+    {% for education in cv.education.all %}
+        <li>{{ education.degree }} at {{ education.institution }} ({{ education.year_started }} - {{ education.year_completed }})</li>
+    {% empty %}
+        <li>No education details added.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'cv_home' %}" class="btn btn-secondary">Back to Home</a>
+{% endblock %}
